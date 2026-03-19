@@ -1,0 +1,46 @@
+-*-APP PSUEDOCODE-*-
+
+Lets plan this out. 
+
+So what is the core feature of this app? 
+	It is a to do app, that resides in your phone. 
+	
+	When you start, it will ask you what time you want to start your day and what time you want to end your day.
+	The App will also ask for notification permission. It cannot work without permission.
+	
+	This will be your recurring check in and check out times. Something you will be able to change in the settings menu. 
+	on your check in time, a popup will appear on the top right/left/bottom or top of your screen, asking for permission to have your attention. 
+	If you choose no, it'll wait 30 minutes before asking again. 
+	
+	Once you press yes, a popup will appear on the center of your screen. You will be prompted to type a maximum of five tasks to focus on today.
+	(maybe there can be little quotes of the day too?)
+	
+	The app will leave you be for the rest of the day, although the tasks will be visible using a widget on your home screen. 
+	
+	At check out time, the app will ask for permission to have your attention again. If you choose no, it'll try again in 30 minutes. 
+	When you press yes,the same popup will appear.
+
+	But this time, the app asks you to check what you've done today. You can't check anything yourself until checkout time.
+	 This is done to have you reflect on what you've done, after the day is over. 
+	
+	The list of tasks always resets each day.
+
+What else am i thinking? 
+
+	In the setting tab, You can customize where the prompt shows up,
+	you can change check in and check out times whenever. 
+	
+	Maybe I can add a reflect mode or not, say some people may prefer to check tasks as they do them, while others may enjoy reflecting on their day.
+	
+	I want a history tab, where data is saved and shown, like the github contribution blocks. 
+
+	What if users could connect with other users? Have a leaderboard and be able to compete with each other? 
+
+	Autism and ADHD friendly mode? AKA  Minimilistic and Chaotic mode XD 
+	
+
+Create a Roadmap: 
+	Version 1: Get basics down. Get 5 tasks down. See them on screen. Get check in and check out  notifications on time.
+	Version 2? 
+
+	Lets just focus on making it first. 
