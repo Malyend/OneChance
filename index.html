@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Roberto FT/Malyend">
+    <meta name="referrer" content="no-refferer">
+
+    <title>OneChance</title>
+
+    <link rel="stylesheet" href="toDo.Css" type="CSS/text">
+</head>
+<body>
+    
+    <!--
+   1. I need a prompt screen to set up check in and check out times
+   2. I need another prompt screen to add five tasks
+   3. I need a prompt screen to check the tasks
+    -->
+
+    <section id="Start-screen">
+        <h1>OneChance</h1>
+        <p>Welcome to One Chance <br>
+        The Chance to make a difference in your life.</p>
+        <p>Please, specify a check in and a check out time:</p>
+
+        <form id="Check">
+            <label for="check-in">Check in</label>
+            <input
+            id="check-in"
+             type="time" 
+             value="09:00"
+             step="900">
+
+             <label for="check-out">Check out</label>
+             <input
+             type="time"
+             value="23:00"
+             step="900">
+        </form>
+    </section>
+
+    <section id="five-tasks">
+        <h1>OneChance</h1>
+        <p>Goodmorning <br>
+         You drool in your sleep</p>
+
+         <p> What five tasks will you do today?</p>
+
+            <form class="five-In">
+                <label for="tasks">What commitments will you choose?</label>
+                <input group="tasks "id="task1" type="text" value="Task 1">
+                <input group="tasks" id="task2" type="text" value="Task 2">
+                <input group="tasks" id="task3" type="text" value="Task 3">
+                <input group="tasks" id="task4" type="text" value="Task 4">
+                <input group="tasks" id="task5" type="text" value="Task 5">
+
+                <input id="Confirm" type="button" value="confirm">
+                <input id="Exit" type="button" value="Exit"> 
+           </form>
+
+    </section>
+
+    <section class="five-tasks">
+        <h1>OneChance</h1>
+        <p>Good Evening, <br>
+            Long day?
+        </p>
+
+        <p>What five tasks have you completed?</p>
+
+        <form id="five-out">
+            <label for="tasks">Have you committed?</label>
+                <input group="tasks "id="task1" type="text" value="Task 1"> 
+                <input type="checkbox" id="task1Box">
+
+                <input group="tasks" id="task2" type="text" value="Task 2">
+                <input type="checkbox" id="task2Box">
+
+                <input group="tasks" id="task3" type="text" value="Task 3">
+                <input type="checkbox" id="task3Box">
+
+                <input group="tasks" id="task4" type="text" value="Task 4">
+                <input type="checkbox" id="task4Box">
+
+                <input group="tasks" id="task5" type="text" value="Task 5">
+                <input type="checkbox" id="task5Box">
+
+                <input id="Confirm" type="button" value="confirm">
+                <input id="Exit" type="button" value="Exit"> 
+        </form>
+    </section>
+
+</body>
+</html>
