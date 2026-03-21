@@ -34,6 +34,7 @@
 
              <label for="check-out">Check out</label>
              <input
+             id="check-out"
              type="time"
              value="23:00"
              step="900">
@@ -48,15 +49,15 @@
          <p> What five tasks will you do today?</p>
 
             <form class="five-In">
-                <label for="tasks">What commitments will you choose?</label>
-                <input group="tasks "id="task1" type="text" value="Task 1">
-                <input group="tasks" id="task2" type="text" value="Task 2">
-                <input group="tasks" id="task3" type="text" value="Task 3">
-                <input group="tasks" id="task4" type="text" value="Task 4">
-                <input group="tasks" id="task5" type="text" value="Task 5">
+                <label>What commitments will you choose?</label>
+                <input name="tasks" id="task1" type="text" value="Task 1">
+                <input name="tasks" id="task2" type="text" value="Task 2">
+                <input name="tasks" id="task3" type="text" value="Task 3">
+                <input name="tasks" id="task4" type="text" value="Task 4">
+                <input name="tasks" id="task5" type="text" value="Task 5">
 
-                <input id="Confirm" type="button" value="confirm">
-                <input id="Exit" type="button" value="Exit"> 
+                <input name="Confirm" type="button" value="confirm">
+                <input name="Exit" type="button" value="Exit"> 
            </form>
 
     </section>
@@ -70,24 +71,24 @@
         <p>What five tasks have you completed?</p>
 
         <form id="five-out">
-            <label for="tasks">Have you committed?</label>
-                <input group="tasks "id="task1" type="text" value="Task 1"> 
+            <label>Have you committed?</label>
+                <input name="tasks" id="task1-out" type="text" value="Task 1"> 
                 <input type="checkbox" id="task1Box">
 
-                <input group="tasks" id="task2" type="text" value="Task 2">
+                <input name="tasks" id="task2-out" type="text" value="Task 2">
                 <input type="checkbox" id="task2Box">
 
-                <input group="tasks" id="task3" type="text" value="Task 3">
+                <input name="tasks" id="task3-out" type="text" value="Task 3">
                 <input type="checkbox" id="task3Box">
 
-                <input group="tasks" id="task4" type="text" value="Task 4">
+                <input name="tasks" id="task4-out" type="text" value="Task 4">
                 <input type="checkbox" id="task4Box">
 
-                <input group="tasks" id="task5" type="text" value="Task 5">
+                <input name="tasks" id="task5-out" type="text" value="Task 5">
                 <input type="checkbox" id="task5Box">
 
-                <input id="Confirm" type="button" value="confirm">
-                <input id="Exit" type="button" value="Exit"> 
+                <input name="Confirm" type="button" value="confirm">
+                <input name="Exit" type="button" value="Exit"> 
         </form>
     </section>
 
