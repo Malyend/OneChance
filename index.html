@@ -8,7 +8,7 @@
 
     <title>OneChance</title>
 
-    <link rel="stylesheet" href="toDo.Css" type="CSS/text">
+    <link rel="stylesheet" href="toDo.Css">
 </head>
 <body>
     
@@ -20,8 +20,8 @@
 
     <section id="Start-screen">
         <h1>OneChance</h1>
-        <p>Welcome to One Chance <br>
-        The Chance to make a difference in your life.</p>
+        <p class="greeting">Welcome to One Chance </p>
+        <p>The Chance to make a difference in your life.</p>
         <p>Please, specify a check in and a check out time:</p>
 
         <form id="Check">
@@ -41,37 +41,37 @@
         </form>
     </section>
 
-    <section id="five-tasks">
+    <section class="five-tasks">
         <h1>OneChance</h1>
-        <p>Goodmorning <br>
-         You drool in your sleep</p>
+        <p class="greeting">Goodmorning </p>
+         <p>You drool in your sleep</p>
 
          <p> What five tasks will you do today?</p>
 
-            <form class="five-In">
+            <form id="five-in">
                 <label>What commitments will you choose?</label>
                 <input name="tasks" id="task1" type="text" value="Task 1">
                 <input name="tasks" id="task2" type="text" value="Task 2">
                 <input name="tasks" id="task3" type="text" value="Task 3">
                 <input name="tasks" id="task4" type="text" value="Task 4">
                 <input name="tasks" id="task5" type="text" value="Task 5">
-
-                <input name="Confirm" type="button" value="confirm">
-                <input name="Exit" type="button" value="Exit"> 
+                <br>
+                <input id="Confirm-1" name="Confirm" type="button" value="confirm">
+                <input id="Exit-1" name="Exit" type="button" value="Exit"> 
            </form>
 
     </section>
 
     <section class="five-tasks">
         <h1>OneChance</h1>
-        <p>Good Evening, <br>
-            Long day?
-        </p>
+        <p class="greeting">Good Evening</p>
+        <p>Long day?</p>
 
         <p>What five tasks have you completed?</p>
 
         <form id="five-out">
             <label>Have you committed?</label>
+
                 <input name="tasks" id="task1-out" type="text" value="Task 1"> 
                 <input type="checkbox" id="task1Box">
 
@@ -86,9 +86,9 @@
 
                 <input name="tasks" id="task5-out" type="text" value="Task 5">
                 <input type="checkbox" id="task5Box">
-
-                <input name="Confirm" type="button" value="confirm">
-                <input name="Exit" type="button" value="Exit"> 
+            <br>
+                <input id="Confirm-2" name="Confirm" type="button" value="confirm">
+                <input id="Exit-2" name="Exit" type="button" value="Exit"> 
         </form>
     </section>
 

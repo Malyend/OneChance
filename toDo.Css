@@ -1,0 +1,245 @@
+/*full screen*/
+:root {
+    --form-control-color: lightblue;
+}
+
+body {
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+
+
+p {
+    margin: 0.3rem;
+}
+
+/*First Paragraph, serving as greetings*/
+.greeting {
+    font-size: 1.3rem;
+
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    font-style: oblique;
+
+    font-weight: 600;
+}
+
+.five-tasks {
+    display: flex;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.847);
+
+    color: whitesmoke;
+    text-align: center;
+    
+    padding: 0.6rem;
+    box-shadow: 0 2px ;
+    
+    z-index: 2;
+    width: 400px;
+
+    margin-bottom: 0.2rem;
+}
+
+.five-tasks h1 {
+    margin: 0;
+    text-align: start;
+
+    border-bottom: 2px solid lightblue;
+}
+
+#five-in,
+#five-out {
+    justify-content: center;
+    align-items: center;
+
+    flex: 1; 
+
+    padding: 1rem;
+    border-right: 2px solid lightblue;
+    border-left: 2px solid lightblue;
+
+}
+
+/*This is for the task bars specifically*/
+input {
+    text-align: center;
+
+    font-size: 1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    padding: 0.2rem;
+    background-color: rgb(196, 189, 189);
+
+    border-radius: 8px;
+}
+
+#five-in input,
+#five-out input {
+    margin-top: 0.6rem;
+    padding: 0.3rem;
+
+    border-radius: 0.4rem;
+
+}
+
+
+/* Start screen*/
+
+#Start-screen {
+    background-color: rgba(0, 0, 0, 0.847);
+
+    color: whitesmoke;
+    text-align: center;
+    
+    padding: 0.6rem;
+    width: 400px;
+
+    box-shadow: 0 2px 8px rgba( 0, 0, 0, 0.5) ;
+
+    z-index: 2;
+
+    margin: 0.5rem;
+}
+
+#Start-screen h1 {
+    text-align: start;
+    margin: 0.2rem;
+
+    font-style: oblique;
+    border-bottom: 2px solid lightblue;
+}
+
+#Check {
+    border-right: 2px solid lightblue;
+    border-left: 2px solid lightblue ;
+
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#Check label {
+    justify-content: center;
+    align-self: center;
+
+    font-size: 1.2rem;
+}
+
+/*Check in Screen*/
+
+
+
+
+input#Confirm-1 {
+    background-color: rgb(16, 158, 183);
+
+    border: none;
+    padding: 0.5rem;
+    margin-right: 0.3rem;
+
+    transition: 0.4s;
+}
+
+
+input#Exit-1 {
+    background-color: rgb(223, 6, 6);
+
+    border: none;
+    padding: 0.5rem;
+
+    transition: 0.4s;
+}
+
+
+#Confirm-1:hover,
+    #Exit-1:hover {
+    cursor: pointer;
+
+    transform: scale(1.4);
+    transition: 0.4s;
+
+    color: whitesmoke;
+}
+
+
+/*Check Out Screen*/
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    transform: translateY(-0.075em);
+
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.form-control + .form-control {
+    margin-top: 1em;
+}
+
+
+
+input#Confirm-2 {
+    background-color: rgb(16, 158, 183);
+
+    border: none;
+    padding: 0.5rem;
+    margin-right: 0.3rem;
+
+    transition: 0.4s;
+}
+
+
+input#Exit-2 {
+    background-color: rgb(223, 6, 6);
+
+    border: none;
+    padding: 0.5rem;
+
+    transition: 0.4s;
+}
+
+
+#Confirm-2:hover,
+    #Exit-2:hover {
+    cursor: pointer;
+
+    transform: scale(1.4);
+    transition: 0.4s;
+
+    color: whitesmoke;
+}
