@@ -143,6 +143,47 @@ input {
     font-size: 1.2rem;
 }
 
+.button-1-cont {
+    padding-top: 0.8rem;
+    margin: 0;
+
+    flex: 1;
+    flex-direction: row;
+    display: flex;
+
+    justify-content: center;
+    gap: 0.4em;
+}
+
+input#Confirm {
+    background-color: rgb(16, 158, 183);
+
+    border: none;
+    padding: 0.5rem;
+    margin-right: 0.3rem;
+
+    transition: 0.4s;
+}
+
+input#Exit {
+     background-color: rgb(223, 6, 6);
+
+    border: none;
+    padding: 0.5rem;
+
+    transition: 0.4s;
+}
+
+#Confirm:hover,
+    #Exit:hover {
+    cursor: pointer;
+
+    transform: scale(1.4);
+    transition: 0.4s;
+
+    color: whitesmoke;
+}
+
 /*Check in Screen*/
 
 
@@ -275,4 +316,13 @@ input#Exit-2 {
     transition: 0.4s;
 
     color: whitesmoke;
+}
+
+/* Javascript Experiments */ 
+section {
+    opacity: 0;
+}
+.Active {
+    opacity: 1;
+
 }
