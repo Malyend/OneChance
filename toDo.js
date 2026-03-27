@@ -13,31 +13,75 @@ function startScreen(){
     this works.
     */
 
-
-function showScreen(){
-     const Start = document.getElementById("Start-screen");
-    Start.classList.add('Active');
-    const inScreen = document.getElementById("check-in-screen");
-
-    const taskConfirm0 = document.getElementById('Confirm');
     const task0Exit = document.getElementById('Exit');
 
-    taskConfirm0.addEventListener("click", showCheckIn);
+     // Leave the app
     task0Exit.addEventListener("click",exitStart);
 
-    function showCheckIn(){
-        inScreen.classList.add('Active');
-    }
-
-    function exitStart(){
+     function exitStart(){
         alert("You've left!")
     }
 
-    return showScreen
+
+function swapScreen(){
+    
+    // The Start Screen
+     const Start = document.getElementById("Start-screen");
+    Start.classList.add('Active');
+
+    const taskConfirm0 = document.getElementById('Confirm');
+
+    // The Check in Screen
+    const inScreen = document.getElementById("check-in-screen");
+    const taskConfirm1 = document.getElementById("Confirm-1");
+
+    const outScreen = document.getElementById("check-out-screen");
+    
+    //Start Screet --> In screen
+    taskConfirm0.addEventListener("click", showCheckIn);
+
+    function showCheckIn(){
+        inScreen.classList.add('Active');
+        Start.classList.remove('Active');
+    }
+
+    // In screen --> Out screen
+    taskConfirm1.addEventListener("click", showCheckOut)
+
+    function showCheckOut(){
+        inScreen.classList.remove('Active')
+        outScreen.classList.add('Active')
+    }
+
+    //In screen --> Start screen
+    const task1Exit = document.getElementById('Exit-1');
+    
+    task1Exit.addEventListener("click", backToStart )
+
+    function backToStart() {
+        Start.classList.add('Active')
+        inScreen.classList.remove('Active');
+    }
+
+    //out screen --> In Screen
+    const task2Exit = document.getElementById('Exit-2');
+
+    task2Exit.addEventListener("click", backToIn )
+
+    function backToIn() {
+        inScreen.classList.add('Active');
+        outScreen.classList.remove('Active');
+    }
+   
+    //out Screen --> Complete!
+    const taskConfirm2 = document.getElementById("Confirm-2");
+
+    taskConfirm2.addEventListener("click", completeScreen)
+
+    function completeScreen(){
+        alert("You've Completed! Well done!")
+    }
+    return swapScreen
 }
 
-showScreen()
-
-function hideScreen(){
-
-}
+swapScreen()

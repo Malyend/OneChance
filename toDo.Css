@@ -321,8 +321,11 @@ input#Exit-2 {
 /* Javascript Experiments */ 
 section {
     opacity: 0;
+    position: relative;
+    
 }
 .Active {
     opacity: 1;
+    
 
 }
