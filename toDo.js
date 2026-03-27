@@ -24,7 +24,7 @@ function startScreen(){
 
 
 function swapScreen(){
-    
+
     // The Start Screen
      const Start = document.getElementById("Start-screen");
     Start.classList.add('Active');
@@ -46,7 +46,7 @@ function swapScreen(){
     }
 
     // In screen --> Out screen
-    taskConfirm1.addEventListener("click", showCheckOut)
+    taskConfirm1.addEventListener("click", showCheckOut);
 
     function showCheckOut(){
         inScreen.classList.remove('Active')
