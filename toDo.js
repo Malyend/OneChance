@@ -1,87 +1,93 @@
 // App Start! Less do this! 
 
-// let checkIn 
-// let checkOut 
+    // Confirm var assignment
+    const taskConfirm0 = document.getElementById('Confirm');
+    const taskConfirm1 = document.getElementById("Confirm-1");
+    const taskConfirm2 = document.getElementById("Confirm-2");
 
-
-/* 
-function startScreen(){
-    const Start = document.getElementById("Start-screen");
-    Start = document.getElementById("Start-screen").style.opacity = 1;
-    return startScreen
-} 
-    this works.
-    */
-
+    // Exit var assignment
     const task0Exit = document.getElementById('Exit');
+    const task1Exit = document.getElementById('Exit-1');
+    const task2Exit = document.getElementById('Exit-2');
 
-     // Leave the app
+    // Screen var assignments
+    const Start = document.getElementById("Start-screen");
+    const inScreen = document.getElementById("check-in-screen");
+    const outScreen = document.getElementById("check-out-screen");
+
+    // On click - confirm and exit buttons
+    taskConfirm0.addEventListener("click", showCheckIn);
+
+    taskConfirm1.addEventListener("click", showCheckOut);
+    taskConfirm1.addEventListener("click", saveTask);
+
+    taskConfirm2.addEventListener("click", completeScreen)
+
     task0Exit.addEventListener("click",exitStart);
+    task1Exit.addEventListener("click", backToStart )
+    task2Exit.addEventListener("click", backToIn )
 
-     function exitStart(){
+    //active on default
+    Start.classList.add('Active');
+    
+    // Screen changing workflow
+
+    // Exit
+    function exitStart(){
         alert("You've left!")
     }
 
-
-function swapScreen(){
-
-    // The Start Screen
-     const Start = document.getElementById("Start-screen");
-    Start.classList.add('Active');
-
-    const taskConfirm0 = document.getElementById('Confirm');
-
-    // The Check in Screen
-    const inScreen = document.getElementById("check-in-screen");
-    const taskConfirm1 = document.getElementById("Confirm-1");
-
-    const outScreen = document.getElementById("check-out-screen");
-    
-    //Start Screet --> In screen
-    taskConfirm0.addEventListener("click", showCheckIn);
-
-    function showCheckIn(){
-        inScreen.classList.add('Active');
-        Start.classList.remove('Active');
-    }
-
-    // In screen --> Out screen
-    taskConfirm1.addEventListener("click", showCheckOut);
-
-    function showCheckOut(){
-        inScreen.classList.remove('Active')
-        outScreen.classList.add('Active')
-    }
-
-    //In screen --> Start screen
-    const task1Exit = document.getElementById('Exit-1');
-    
-    task1Exit.addEventListener("click", backToStart )
-
-    function backToStart() {
+      function backToStart() {
         Start.classList.add('Active')
         inScreen.classList.remove('Active');
     }
 
-    //out screen --> In Screen
-    const task2Exit = document.getElementById('Exit-2');
-
-    task2Exit.addEventListener("click", backToIn )
-
-    function backToIn() {
+     function backToIn() {
         inScreen.classList.add('Active');
         outScreen.classList.remove('Active');
     }
-   
-    //out Screen --> Complete!
-    const taskConfirm2 = document.getElementById("Confirm-2");
 
-    taskConfirm2.addEventListener("click", completeScreen)
+    // Continue
+      function showCheckIn(){
+        inScreen.classList.add('Active');
+        Start.classList.remove('Active');
+    }
 
+     function showCheckOut(){
+        inScreen.classList.remove('Active')
+        outScreen.classList.add('Active')
+    }
+    
     function completeScreen(){
         alert("You've Completed! Well done!")
     }
-    return swapScreen
-}
 
-swapScreen()
+    // LocalStorage API
+
+    const savedTask1 = document.getElementById("task1").value;
+    const savedTask2 = document.getElementById("task2").value;
+    const savedTask3 = document.getElementById("task3").value;
+    const savedTask4 = document.getElementById("task4").value;
+    const savedTask5 = document.getElementById("task5").value;
+
+    const appendTask1 = document.getElementById("task1-out").value;
+    const appendTask2 = document.getElementById("task2-out").value;
+    const appendTask3 = document.getElementById("task3-out").value;
+    const appendTask4 = document.getElementById("task4-out").value;
+    const appendTask5 = document.getElementById("task5-out").value;
+    
+
+    const tasksSaved = [ `${savedTask1}`, `${savedTask2}`, `${savedTask3}`, `${savedTask4}`, `${savedTask5}` ];
+    const takeTasks = localStorage.getItem("Tasks");
+
+    function saveTask(){
+        localStorage.setItem("Tasks", JSON.stringify(tasksSaved))
+
+        console.log(localStorage.getItem("Tasks"))
+
+        return
+    }
+
+    function appendTask(){
+
+    }
