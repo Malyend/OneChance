@@ -1,6 +1,8 @@
 // App Start! Less do this! 
 
-    navigator.serviceWorker.register('./serviceWorker.js');
+    navigator.serviceWorker.register('./serviceWorker.js')
+    .then(() => console.log('SW registered!'))
+    .catch((err) => console.log('SW failed:', err));
 
     // Confirm var assignment
     const taskConfirm0 = document.getElementById('Confirm');
