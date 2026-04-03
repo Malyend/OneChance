@@ -9,5 +9,6 @@ self.addEventListener('install', (event) => {
             './serviceWorker.js'
             ])
         })
+    
     )
 })

@@ -4,6 +4,65 @@
     .then(() => console.log('SW registered!'))
     .catch((err) => console.log('SW failed:', err));
 
+    //Notification Permission
+    
+    /* Firefox needs an event handler for notifications to work. You can't just pop notifications in once the page loads. 
+    Someone from Overstack had a good answer I want to try out: 
+
+    JAVASCRIPT
+    if (Notification.permission === 'granted') {
+    //do something
+}
+else if (Notification.permission === 'default') {
+    $('#allow-push-notification-bar').show();
+}
+
+$('#allow-push-notification').click(function () {
+    $('#allow-push-notification-bar').hide();
+    Notification.requestPermission().then(function (status) {
+        if (status === 'denied') {
+            //do something
+        } else if (status === 'granted') {
+            //do something
+        }
+    });
+});
+
+HTML
+<div id="allow-push-notification-bar" class="allow-push-notification-bar">
+    <div class="content">
+        <div class="text">
+            Want to get notification from us?
+        </div>
+        <div class="buttons-more">
+            <button type="button" class="ok-button button-1" id="allow-push-notification">
+                Yes
+            </button>
+            <button type="button" class="ok-button button-1" id="close-push-notification">
+                No
+            </button>
+        </div>
+    </div>
+</div>
+
+maybe that can help me make my own version of this. 
+Anyway I'm going to sleep. 
+Be back tomorrow to try this out. 
+     */
+    function showNotification(){
+    
+        Notification.requestPermission().then( perm => {
+            if(perm === "granted"){
+                new Notification("Notifications enabled", {
+                    body: "Try not to regret your life choices",
+                    tag: "Greeting",
+                    icon: "./Images/maskable_icon_x192.png",
+                })
+            }
+        })
+        }
+    showNotification()
+
     // Confirm var assignment
     const taskConfirm0 = document.getElementById('Confirm');
     const taskConfirm1 = document.getElementById("Confirm-1");
@@ -80,6 +139,8 @@
         localStorage.setItem("checkIn", checkInTime);
         localStorage.setItem("checkOut", checkOutTime);
 
+        console.log("Times are saved")
+
         return
     }
 
@@ -109,4 +170,38 @@
     }
 
  
+    // Get the current time
+   
+    setInterval(() => {
+         if (!localStorage.getItem("checkIn") || (!localStorage.getItem("checkOut"))){ 
+        return
+    }; 
 
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+
+        // Get the Check in time, split the Hour and the Minutes, convert them into integers and check for the minute and hour to align. It's beautiful ^_^
+        const checkIn = localStorage.getItem("checkIn").split(":");
+        const checkInHour = Number(checkIn[0]);
+        const checkInMinute = Number(checkIn[1]);
+
+        if (checkInHour == currentHour && checkInMinute == currentMinute){
+            new Notification("The time has come", {
+                body: "Welp, good luck of your day",
+                icon: "./Images/maskable_icon_x192.png",
+            })
+        } 
+
+        const checkOut = localStorage.getItem("checkOut").split(":");
+        const checkOutHour = Number(checkOut[0]);
+        const checkOutMinute = Number(checkOut[1]);
+
+        if (checkOutHour == currentHour && checkOutMinute == currentMinute){
+            new Notification("The ending always comes...", {
+                body: "You have died",
+                icon: "./Images/maskable_icon_x192.png",
+        })
+        }
+    }, 45000);
+        
