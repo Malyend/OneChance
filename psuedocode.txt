@@ -40,7 +40,17 @@ What else am i thinking?
 	
 
 Create a Roadmap: 
-	Version 1: Get basics down. Get 5 tasks down. See them on screen. Get check in and check out  notifications on time.
-	Version 2? 
+	Version 1: Get basics down. Get 5 tasks down. See them on screen. Get check in and check out  notifications on time. 
+	Make the app css Responsive.
+	Get service worker working.
+	Get LocalStorage and Notifications working.
+	Make sure it works on phone.
+	Consider battery and space cost.
 
-	Lets just focus on making it first. 
+	Version 2: 
+	Create extra tabs for boundaries for the day.
+	Checkboxes get monitored and create different dialogue for how many check boxes checked.
+	Polish and refine css
+	Debug and polish.
+	To be continued.. 
+

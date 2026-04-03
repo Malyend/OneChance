@@ -17,6 +17,7 @@
 
     // On click - confirm and exit buttons
     taskConfirm0.addEventListener("click", showCheckIn);
+    taskConfirm0.addEventListener("click", saveTimes)
 
     taskConfirm1.addEventListener("click", showCheckOut);
     taskConfirm1.addEventListener("click", saveAndGetTask);
@@ -60,18 +61,27 @@
     
     function completeScreen(){
         alert("You've Completed! Well done!")
-    }
+
+        return localStorage.clear()
+    };
 
     // LocalStorage API
 
-    
 
-    
+    function saveTimes(){
+        // Time Assignment
+        const checkInTime = document.getElementById("check-in").value;
+        const checkOutTime = document.getElementById("check-out").value;
 
-   
-   // const takeTasks = localStorage.getItem("Tasks");
+        localStorage.setItem("checkIn", checkInTime);
+        localStorage.setItem("checkOut", checkOutTime);
+
+        return
+    }
+
 
     function saveAndGetTask(){
+        // Task values are saved in these variables
         const savedTask1 = document.getElementById("task1").value;
         const savedTask2 = document.getElementById("task2").value;
         const savedTask3 = document.getElementById("task3").value;
@@ -79,14 +89,20 @@
         const savedTask5 = document.getElementById("task5").value;
 
         const tasksSaved = [ `${savedTask1}`, `${savedTask2}`, `${savedTask3}`, `${savedTask4}`, `${savedTask5}` ];
-        localStorage.setItem("Tasks", JSON.stringify(tasksSaved))
 
-         document.getElementById("task1-out").value = tasksSaved[0];
-         document.getElementById("task2-out").value = tasksSaved[1];
-         document.getElementById("task3-out").value = tasksSaved[2];
-         document.getElementById("task4-out").value = tasksSaved[3];
-         document.getElementById("task5-out").value = tasksSaved[4];
+        //localStorage only reads string items, however you can parse other data types to return them. Such as an integer or a boolean, i don't need that yet. 
 
+        localStorage.setItem("Tasks", JSON.stringify(tasksSaved));
+        const retrieved = JSON.parse(localStorage.getItem("Tasks"));
+        // Items in an Array? Get!
+         document.getElementById("task1-out").value = retrieved[0];
+         document.getElementById("task2-out").value = retrieved[1];
+         document.getElementById("task3-out").value = retrieved[2];
+         document.getElementById("task4-out").value = retrieved[3];
+         document.getElementById("task5-out").value = retrieved[4];
 
         return
     }
+
+ 
+
