@@ -19,7 +19,7 @@
     taskConfirm0.addEventListener("click", showCheckIn);
 
     taskConfirm1.addEventListener("click", showCheckOut);
-    taskConfirm1.addEventListener("click", saveTask);
+    taskConfirm1.addEventListener("click", saveAndGetTask);
 
     taskConfirm2.addEventListener("click", completeScreen)
 
@@ -64,30 +64,29 @@
 
     // LocalStorage API
 
-    const savedTask1 = document.getElementById("task1").value;
-    const savedTask2 = document.getElementById("task2").value;
-    const savedTask3 = document.getElementById("task3").value;
-    const savedTask4 = document.getElementById("task4").value;
-    const savedTask5 = document.getElementById("task5").value;
-
-    const appendTask1 = document.getElementById("task1-out").value;
-    const appendTask2 = document.getElementById("task2-out").value;
-    const appendTask3 = document.getElementById("task3-out").value;
-    const appendTask4 = document.getElementById("task4-out").value;
-    const appendTask5 = document.getElementById("task5-out").value;
     
 
-    const tasksSaved = [ `${savedTask1}`, `${savedTask2}`, `${savedTask3}`, `${savedTask4}`, `${savedTask5}` ];
-    const takeTasks = localStorage.getItem("Tasks");
+    
 
-    function saveTask(){
+   
+   // const takeTasks = localStorage.getItem("Tasks");
+
+    function saveAndGetTask(){
+        const savedTask1 = document.getElementById("task1").value;
+        const savedTask2 = document.getElementById("task2").value;
+        const savedTask3 = document.getElementById("task3").value;
+        const savedTask4 = document.getElementById("task4").value;
+        const savedTask5 = document.getElementById("task5").value;
+
+        const tasksSaved = [ `${savedTask1}`, `${savedTask2}`, `${savedTask3}`, `${savedTask4}`, `${savedTask5}` ];
         localStorage.setItem("Tasks", JSON.stringify(tasksSaved))
 
-        console.log(localStorage.getItem("Tasks"))
+         document.getElementById("task1-out").value = tasksSaved[0];
+         document.getElementById("task2-out").value = tasksSaved[1];
+         document.getElementById("task3-out").value = tasksSaved[2];
+         document.getElementById("task4-out").value = tasksSaved[3];
+         document.getElementById("task5-out").value = tasksSaved[4];
+
 
         return
-    }
-
-    function appendTask(){
-
     }
