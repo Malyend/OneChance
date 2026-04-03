@@ -1,6 +1,6 @@
 // App Start! Less do this! 
 
-    navigator.serviceWorker.register('./Js-files/serviceWorker.js')
+    navigator.serviceWorker.register('./Js-files/serviceWorker.js');
 
     // Confirm var assignment
     const taskConfirm0 = document.getElementById('Confirm');
