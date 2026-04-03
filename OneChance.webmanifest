@@ -1,0 +1,41 @@
+{
+    "name": "OneChance",
+    "short_name": "One",
+    "id": "OneChance",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "theme_color": "rgb(16, 158, 183)",
+    "background_color": "transparent",
+
+    "orientation": "portrait",
+
+    "categories": "productivity, lifestyle",
+    "description": "You only get one chance at life, Make it count. A to do app, that tries for you.",
+
+    "icons" : [
+        {
+            "src": "./Images/maskable_icon_x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        },
+        {
+            "src": "./Images/maskable_icon_x384.png",
+            "type": "image/png",
+            "sizes": "384x384",
+            "purpose": "maskable"
+        },
+        {
+            "src": "./Images/maskable_icon_x128.png",
+            "type": "image/png",
+            "sizes": "128x128",
+            "purpose": "maskable"
+        },
+        {
+            "src": "./Images/maskable_icon_x96.png",
+            "type": "image/png",
+            "sizes": "96x96",
+            "purpose": "maskable"
+        }
+    ]
+}
