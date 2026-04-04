@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
-app.post('https://onechance.onrender.com/subscribe', (req, res) => {
+app.post('/subscribe', (req, res) => {
     userSubscription = req.body.subscription,
     checkIn = req.body.checkIn,
     checkOut = req.body.checkOut,
@@ -31,7 +31,7 @@ app.post('https://onechance.onrender.com/subscribe', (req, res) => {
     res.status(201).json({message: 'Subscribed!' })
 })
 
-app.post('https://onechance.onrender.com/send-notification', (req, res) => {
+app.post('/send-notification', (req, res) => {
     const payload = JSON.stringify({
         title: req.body.title,
         body: req.body.body

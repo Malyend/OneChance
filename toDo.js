@@ -46,7 +46,7 @@
                 applicationServerKey: PUBLIC_VAPID_KEY
             })
 
-            await fetch('https://onechance.onrender.com/', {
+            await fetch('https://onechance.onrender.com/subscribe', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json' },
                 body: JSON.stringify({
