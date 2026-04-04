@@ -4,64 +4,9 @@
     .then(() => console.log('SW registered!'))
     .catch((err) => console.log('SW failed:', err));
 
-    //Notification Permission
+    // Public Vapid Key
+    const PUBLIC_VAPID_KEY = 'BJCSsZZcJNC8e7PWGTwMrdMN7ebg8d6AGZw8HfRJ8RDco0ChozKJ8lqVfMzphtFPCHohkr0rrBPaXi7ez9lyEDQ';
     
-    /* Firefox needs an event handler for notifications to work. You can't just pop notifications in once the page loads. 
-    Someone from Overstack had a good answer I want to try out: 
-
-    JAVASCRIPT
-    if (Notification.permission === 'granted') {
-    //do something
-}
-else if (Notification.permission === 'default') {
-    $('#allow-push-notification-bar').show();
-}
-
-$('#allow-push-notification').click(function () {
-    $('#allow-push-notification-bar').hide();
-    Notification.requestPermission().then(function (status) {
-        if (status === 'denied') {
-            //do something
-        } else if (status === 'granted') {
-            //do something
-        }
-    });
-});
-
-HTML
-<div id="allow-push-notification-bar" class="allow-push-notification-bar">
-    <div class="content">
-        <div class="text">
-            Want to get notification from us?
-        </div>
-        <div class="buttons-more">
-            <button type="button" class="ok-button button-1" id="allow-push-notification">
-                Yes
-            </button>
-            <button type="button" class="ok-button button-1" id="close-push-notification">
-                No
-            </button>
-        </div>
-    </div>
-</div>
-
-maybe that can help me make my own version of this. 
-Anyway I'm going to sleep. 
-Be back tomorrow to try this out. 
-     */
-    function showNotification(){
-    
-        Notification.requestPermission().then( perm => {
-            if(perm === "granted"){
-                new Notification("Notifications enabled", {
-                    body: "Try not to regret your life choices",
-                    tag: "Greeting",
-                    icon: "./Images/maskable_icon_x192.png",
-                })
-            }
-        })
-        }
-    showNotification()
 
     // Confirm var assignment
     const taskConfirm0 = document.getElementById('Confirm');
@@ -79,8 +24,8 @@ Be back tomorrow to try this out.
     const outScreen = document.getElementById("check-out-screen");
 
     // On click - confirm and exit buttons
-    taskConfirm0.addEventListener("click", showCheckIn);
-    taskConfirm0.addEventListener("click", saveTimes)
+    taskConfirm0.addEventListener("click", saveTimes);
+    taskConfirm0.addEventListener("click", showNotification);
 
     taskConfirm1.addEventListener("click", showCheckOut);
     taskConfirm1.addEventListener("click", saveAndGetTask);
@@ -90,6 +35,52 @@ Be back tomorrow to try this out.
     task0Exit.addEventListener("click",exitStart);
     task1Exit.addEventListener("click", backToStart )
     task2Exit.addEventListener("click", backToIn )
+
+
+    //notification Permission
+
+      async function subscribeUser(){
+            const registration = await navigator.serviceWorker.ready;
+            const subscription= await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: PUBLIC_VAPID_KEY
+            })
+
+            await fetch('http://localhost:8080/subscribe', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    subscription: subscription,
+                    checkIn: localStorage.getItem('checkIn'),
+                    checkOut: localStorage.getItem('checkOut'),
+                })
+            })}
+
+     async function showNotification(){
+
+        if (Notification.permission === "granted"){
+             new Notification("Good Morning!", {
+                body: "Did you sleep well?",
+                tag: "Greeting",
+                icon: "./Images/maskable_icon_x96.png",
+            }) 
+             showCheckIn()
+             subscribeUser()
+        } else if (Notification.permission === "default"){
+            Notification.requestPermission().then( perm => {
+                new Notification("Good Morning!", {
+                body: "Did you sleep well?",
+                tag: "Greeting",
+                icon: "./Images/maskable_icon_x96.png",
+            })
+        })
+            showCheckIn()
+            subscribeUser()
+
+        } else if (Notification.permission === "denied"){
+            alert("This App needs Notifications to work, Please enable them in your browser settings")
+        }
+        }
 
     //active on default
     Start.classList.add('Active');
@@ -188,7 +179,7 @@ Be back tomorrow to try this out.
 
         if (checkInHour == currentHour && checkInMinute == currentMinute){
             new Notification("The time has come", {
-                body: "Welp, good luck of your day",
+                body: "Welp, good luck to your day",
                 icon: "./Images/maskable_icon_x192.png",
             })
         } 
@@ -203,5 +194,5 @@ Be back tomorrow to try this out.
                 icon: "./Images/maskable_icon_x192.png",
         })
         }
-    }, 45000);
+    }, 50000);
         
