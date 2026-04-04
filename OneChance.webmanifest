@@ -36,6 +36,18 @@
             "type": "image/png",
             "sizes": "96x96",
             "purpose": "maskable"
+        },
+        {
+            "src":"./Images/maskable_icon_x72.png",
+            "type":"image/png",
+            "sizes": "72x72",
+            "purpose":"maskable"
+        },
+        {
+            "src":"./Images/maskable_icon_x48.png",
+            "type":"image/png",
+            "sizes": "48x48",
+            "purpose":"maskable"
         }
     ]
 }
