@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
-app.post('/subscribe', (req, res) => {
+app.post('https://onechance.onrender.com/subscribe', (req, res) => {
     userSubscription = req.body.subscription,
     checkIn = req.body.checkIn,
     checkOut = req.body.checkOut,
@@ -31,7 +31,7 @@ app.post('/subscribe', (req, res) => {
     res.status(201).json({message: 'Subscribed!' })
 })
 
-app.post('/send-notification', (req, res) => {
+app.post('https://onechance.onrender.com/send-notification', (req, res) => {
     const payload = JSON.stringify({
         title: req.body.title,
         body: req.body.body
@@ -76,5 +76,5 @@ cron.schedule('* * * * *', () => {
 })
 
 app.listen(8080, '0.0.0.0' , () => {
-    console.log('Server is running on http://localhost:8080')
+    console.log('Server is running on https://onechance.onrender.com/')
 })
