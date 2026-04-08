@@ -36,9 +36,20 @@
     task1Exit.addEventListener("click", backToStart )
     task2Exit.addEventListener("click", backToIn )
 
+   function saveTimes(){
+        // Time Assignment
+        const checkInTime = document.getElementById("check-in").value;
+        const checkOutTime = document.getElementById("check-out").value;
+
+        localStorage.setItem("checkIn", checkInTime);
+        localStorage.setItem("checkOut", checkOutTime);
+
+        console.log('Times are saved!')
+
+        return
+    }
 
     //notification Permission
-
       async function subscribeUser(){
             const registration = await navigator.serviceWorker.ready;
             const subscription= await registration.pushManager.subscribe({
@@ -122,18 +133,7 @@
     // LocalStorage API
 
 
-    function saveTimes(){
-        // Time Assignment
-        const checkInTime = document.getElementById("check-in").value;
-        const checkOutTime = document.getElementById("check-out").value;
-
-        localStorage.setItem("checkIn", checkInTime);
-        localStorage.setItem("checkOut", checkOutTime);
-
-        console.log("Times are saved")
-
-        return
-    }
+ 
 
 
     function saveAndGetTask(){

@@ -1,4 +1,15 @@
 require('dotenv').config();
+//SQLite3 database
+const Database = require('better-sqlite3');
+const db = new Database('onechance-db');
+
+db.exec(`
+        CREATE TABLE IF NOT EXISTS subscriptions (
+        id INTEGER PRIMARY KEY,
+        subscription Text,
+        checkIn Text,
+        checkOut Text)`)
+
 const webPush = require('web-push');
 const express = require('express');
 const cors = require('cors');
@@ -23,11 +34,12 @@ app.get('/', (req, res) => {
 })
 
 app.post('/subscribe', (req, res) => {
-    userSubscription = req.body.subscription,
-    checkIn = req.body.checkIn,
-    checkOut = req.body.checkOut,
+    const sub = JSON.stringify(req.body.subscription);
+    const inTime = req.body.checkIn;
+    const outTime = req.body.checkOut;
 
-    console.log('Subscription saved'),
+    db.prepare('INSERT OR REPLACE INTO subscriptions (id, subscription, checkIn, checkOut) VALUES (1, ?, ?, ?)').run(sub, inTime, outTime)
+    console.log('Subscription saved');
     res.status(201).json({message: 'Subscribed!' })
 })
 
@@ -41,37 +53,38 @@ app.post('/send-notification', (req, res) => {
 })
 
 cron.schedule('* * * * *', () => {
-    // For the checkIn time
-    if (!userSubscription || !checkIn) return;
+    
+    const row = db.prepare('SELECT * FROM subscriptions WHERE id = 1').get();
+    if (!row) return;
 
     const now = new Date();
     const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
 
-    const inParts = checkIn.split(':');
+    const inParts = row.checkIn.split(':');
     const inHour = Number(inParts[0]);
     const inMinute = Number(inParts[1]);
 
-    if (currentHour === inHour && currentMinute === inMinute) {
+    if (currentHour === inHour && currentMinute === inMinute){
         const payload = JSON.stringify({
             title: 'OneChance',
-            body: 'The Time of has come, Set your tasks?'
+            body: 'The Time has come, set up your tasks?',
+            screen: 'check-in'
         })
         webPush.sendNotification(userSubscription, payload)
     }
 
-    if (!userSubscription || !checkOut) return;
-
-    const outParts = checkOut.split(':');
+    const outParts = row.checkOut.split(':');
     const outHour = Number(outParts[0]);
     const outMinute = Number(outParts[1]);
 
     if (currentHour === outHour && currentMinute === outMinute){
-        const payload1 = JSON.stringify({
-            title: 'OnceChance',
-            body: 'Judgement day has come, what have you completed?'
+        const payload = JSON.stringify({
+            title: 'OneChance',
+            body: 'The end is nigh, what tasks have you completed',
+            screen: 'check-out'
         })
-        webPush.sendNotification(userSubscription, payload1)
+        webPush.sendNotification(userSubscription, payload)
     }
 })
 

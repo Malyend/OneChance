@@ -20,3 +20,11 @@ self.addEventListener('push', (event) => {
         icon: './Images/maskable_icon_x192.png'
     })
 })
+
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close()
+    const screen = event.notification.data.screen
+    event.waitUntil()(
+        clients.openWindow('/?screen=' + screen)
+    )
+})
