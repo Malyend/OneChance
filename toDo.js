@@ -163,7 +163,7 @@
  
     // Get the current time
    
-    setInterval(() => {
+    /*setInterval(() => {
          if (!localStorage.getItem("checkIn") || (!localStorage.getItem("checkOut"))){ 
         return
     }; 
@@ -194,5 +194,5 @@
                 icon: "./Images/maskable_icon_x192.png",
         })
         }
-    }, 50000);
+    }, 50000);*/
         

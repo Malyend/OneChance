@@ -52,10 +52,15 @@ app.post('/send-notification', (req, res) => {
     res.status(200).json({ message: 'Notification sent!' })
 })
 
+
+
 cron.schedule('* * * * *', () => {
     
     const row = db.prepare('SELECT * FROM subscriptions WHERE id = 1').get();
     if (!row) return;
+
+    const savedSubscription = JSON.parse(row.subscription);
+    
 
     const now = new Date();
     const currentHour = now.getHours();
@@ -65,13 +70,15 @@ cron.schedule('* * * * *', () => {
     const inHour = Number(inParts[0]);
     const inMinute = Number(inParts[1]);
 
+
     if (currentHour === inHour && currentMinute === inMinute){
         const payload = JSON.stringify({
             title: 'OneChance',
             body: 'The Time has come, set up your tasks?',
             screen: 'check-in'
         })
-        webPush.sendNotification(userSubscription, payload)
+        webPush.sendNotification(savedSubscription, payload)
+            .catch(err => console.error("Push failed:", err));
     }
 
     const outParts = row.checkOut.split(':');
@@ -84,9 +91,11 @@ cron.schedule('* * * * *', () => {
             body: 'The end is nigh, what tasks have you completed',
             screen: 'check-out'
         })
-        webPush.sendNotification(userSubscription, payload)
+        webPush.sendNotification(savedSubscription, payload)
+        .catch(err => console.error("Push failed:", err));
     }
 })
+
 
 app.listen(8080, '0.0.0.0' , () => {
     console.log('Server is running on https://onechance.onrender.com/')
